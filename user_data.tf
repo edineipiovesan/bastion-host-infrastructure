@@ -15,5 +15,5 @@ data "null_data_source" "this" {
     user_data = "${path.module}/files/user_data.sh"
   }
 
-  depends_on = [ null_resource.user_data ]
+  depends_on = [null_resource.user_data]
 }

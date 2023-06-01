@@ -13,10 +13,10 @@ resource "aws_launch_template" "this" {
     device_name = "/dev/sdx"
 
     ebs {
-      volume_type           = "gp3"
-      volume_size           = 20
-      iops                  = 3000
-      throughput            = 500
+      volume_type = "gp3"
+      volume_size = 20
+      iops        = 3000
+      throughput  = 500
       # encrypted             = true
       # kms_key_id            = aws_kms_key.this.arn
       delete_on_termination = true
@@ -55,5 +55,9 @@ resource "aws_launch_template" "this" {
     }
   }
 
-  depends_on = [ null_resource.user_data ]
+  metadata_options {
+    http_tokens = "required"
+  }
+
+  depends_on = [null_resource.user_data]
 }
