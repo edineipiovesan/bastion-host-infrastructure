@@ -8,6 +8,10 @@ resource "null_resource" "user_data" {
     }
     on_failure = fail
   }
+
+  triggers = {
+    always_run = timestamp()
+  }
 }
 
 data "null_data_source" "this" {

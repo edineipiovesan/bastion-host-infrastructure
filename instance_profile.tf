@@ -30,3 +30,28 @@ resource "aws_iam_role_policy_attachment" "ssm-attach" {
   role       = aws_iam_role.role.name
   policy_arn = data.aws_iam_policy.ssm.arn
 }
+
+
+resource "aws_iam_policy" "eks" {
+  name        = "eks-full-access"
+  path        = "/"
+  description = "Full EKS access"
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Action = [
+          "eks:*",
+        ]
+        Effect   = "Allow"
+        Resource = "*"
+      },
+    ]
+  })
+}
+
+resource "aws_iam_role_policy_attachment" "eks-attach" {
+  role       = aws_iam_role.role.name
+  policy_arn = aws_iam_policy.eks.arn
+}

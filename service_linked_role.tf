@@ -4,7 +4,7 @@ data "aws_iam_policy_document" "service_role" {
 
     principals {
       type        = "AWS"
-      identifiers = ["arn:aws:iam::257254804006:role/aws-service-role/autoscaling.amazonaws.com/AWSServiceRoleForAutoScaling"]
+      identifiers = ["arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/aws-service-role/autoscaling.amazonaws.com/AWSServiceRoleForAutoScaling"]
     }
 
     actions = ["sts:AssumeRole"]

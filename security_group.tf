@@ -4,7 +4,7 @@ resource "aws_security_group" "egress" {
   vpc_id      = var.vpc
 
   egress {
-    description      = "Enable internet access"
+    description      = "Enable full internet access"
     from_port        = 0
     to_port          = 0
     protocol         = "-1"
