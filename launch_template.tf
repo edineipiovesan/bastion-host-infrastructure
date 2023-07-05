@@ -44,7 +44,7 @@ resource "aws_launch_template" "this" {
     associate_public_ip_address  = false
     delete_on_termination        = true
     subnet_id                    = var.subnet[0]
-    security_groups              = [aws_security_group.egress.id]
+    security_groups              = [aws_security_group.bastion-sg.id]
   }
 
   tag_specifications {

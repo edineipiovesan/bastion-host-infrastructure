@@ -1,6 +1,6 @@
-resource "aws_security_group" "egress" {
-  name        = "egress-traffic"
-  description = "Allow outbound traffic"
+resource "aws_security_group" "bastion-sg" {
+  name        = "bastion-host-sg"
+  description = "Bastion host security group"
   vpc_id      = var.vpc
 
   egress {
